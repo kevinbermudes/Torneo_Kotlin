@@ -6,6 +6,7 @@ import com.example.torneo_kotlin.Rest.tenistas.services.TenistaServicio
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 
@@ -26,13 +27,12 @@ class TenistaController @Autowired constructor(private val tenistaServicio: Teni
     }
 
     @PostMapping
-    fun crearTenista(@RequestBody crearTenistaDTO: CrearTenistaDTO?): ResponseEntity<*> {
+    fun crearTenista(@Validated @RequestBody crearTenistaDTO: CrearTenistaDTO?): ResponseEntity<*> {
         return try {
             val tenista = tenistaServicio.guardarTenista(crearTenistaDTO!!)
             ResponseEntity.ok<TenistaDTO>(tenista)
         } catch (e: Exception) {
             // Log del error para depuración
-            // Respuesta genérica para el cliente
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body<String>("Error al procesar la solicitud")
         }
     }

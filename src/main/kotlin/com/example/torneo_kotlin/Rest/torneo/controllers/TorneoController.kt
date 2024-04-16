@@ -6,7 +6,9 @@ import com.example.torneo_kotlin.Rest.torneo.dto.TorneoDTO
 import com.example.torneo_kotlin.Rest.torneo.services.TorneoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+
 
 @RestController
 @RequestMapping("/torneos")
@@ -17,14 +19,15 @@ class TorneoController(private val torneoService: TorneoService) {
         ResponseEntity.ok(torneoService.obtenerTorneos())
 
     @PostMapping
-    fun crearTorneo(@RequestBody dto: CrearTorneoDTO): ResponseEntity<*> {
+    fun crearTorneo(@RequestBody @Validated dto: CrearTorneoDTO): ResponseEntity<*> {
         return try {
             val torneo = torneoService.createTorneo(dto)
-            ResponseEntity.status(HttpStatus.CREATED).body(torneo)
+            ResponseEntity.ok(torneo)
         } catch (e: Exception) {
-            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al crear el torneo")
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al crear el torneo: ${e.message}")
         }
     }
+
 
     @GetMapping("/{id}")
     fun obtenerTorneoPorId(@PathVariable id: Long): ResponseEntity<TorneoDTO> =
@@ -43,3 +46,6 @@ class TorneoController(private val torneoService: TorneoService) {
     fun eliminarTorneo(@PathVariable id: Long): ResponseEntity<Void> =
         ResponseEntity.noContent().also { torneoService.deleteTorneo(id) }.build()
 }
+
+
+
