@@ -10,11 +10,15 @@ data class Torneos(
     var id: Long? = null,
     @Column(name = "ubicacion")
     var ubicacion: String,
+
+    @Column(name = "modalidad")
     @Enumerated(EnumType.STRING)
     var modalidad: Tipos,
-    @Column(name = "categoria")
+
+    @Column(name = "categoria_categoria")
     @Enumerated(EnumType.STRING)
     var categoriaCategoria: Categoria,
+
     @Column(name = "vacantes")
     var vacantes: Int,
     @Column(name = "premio")
