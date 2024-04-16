@@ -37,6 +37,8 @@ dependencies {
     implementation("org.hibernate.validator:hibernate-validator:7.0.1.Final")
     implementation("org.glassfish:jakarta.el:3.0.3")
     implementation("jakarta.validation:jakarta.validation-api:3.0.0")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 }
 
