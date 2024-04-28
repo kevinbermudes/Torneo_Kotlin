@@ -2,6 +2,7 @@ package com.example.torneo_kotlin.Rest.tenistas.controllers
 
 import com.example.torneo_kotlin.Rest.tenistas.dto.CrearTenistaDTO
 import com.example.torneo_kotlin.Rest.tenistas.dto.TenistaDTO
+import com.example.torneo_kotlin.Rest.tenistas.dto.UpdateTenistaDto
 import com.example.torneo_kotlin.Rest.tenistas.services.TenistaServicio
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -39,13 +40,25 @@ class TenistaController @Autowired constructor(private val tenistaServicio: Teni
 
 
     @PutMapping("/{id}")
-    fun actualizarTenista(@PathVariable id: Long, @RequestBody tenistaDTO: TenistaDTO): ResponseEntity<TenistaDTO> {
+    fun actualizarTenista(
+        @PathVariable id: Long,
+        @RequestBody tenistaDTO: UpdateTenistaDto
+    ): ResponseEntity<TenistaDTO> {
+        val tenistaActualizado = tenistaServicio.actualizarTenista(id, tenistaDTO)
+        return ResponseEntity.ok(tenistaActualizado)
+    }
+
+    @PatchMapping("/{id}")
+    fun actualizarTenistaParcial(
+        @PathVariable id: Long,
+        @RequestBody tenistaDTO: UpdateTenistaDto
+    ): ResponseEntity<TenistaDTO> {
         val tenistaActualizado = tenistaServicio.actualizarTenista(id, tenistaDTO)
         return ResponseEntity.ok(tenistaActualizado)
     }
 
     @DeleteMapping("/{id}")
-    fun eliminarTenista(@PathVariable id: Long): ResponseEntity<Void> {
+    fun eliminarTenista(@PathVariable id: Long): ResponseEntity<TenistaDTO> {
         tenistaServicio.eliminarTenista(id)
         return ResponseEntity.noContent().build()
     }

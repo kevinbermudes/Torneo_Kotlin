@@ -1,7 +1,8 @@
 package com.example.torneo_kotlin.Rest.tenistas.repositories
 
 import com.example.torneo_kotlin.Rest.tenistas.models.Tenista
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.jpa.repository.JpaRepository
 
-interface TenistaRepositorio : CrudRepository<Tenista, Long> {
+interface TenistaRepositorio : JpaRepository<Tenista, Long> {
+
 }

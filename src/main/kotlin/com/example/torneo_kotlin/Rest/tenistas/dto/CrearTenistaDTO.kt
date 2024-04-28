@@ -12,6 +12,7 @@ import java.util.*
 
 data class CrearTenistaDTO(
 
+
     @field:NotBlank(message = "El nombre completo no puede estar vacío")
     @field:Length(max = 100, message = "El nombre completo no puede tener más de 100 caracteres")
     val nombreCompleto: String,
@@ -32,7 +33,8 @@ data class CrearTenistaDTO(
     @field:NotNull(message = "La mano no puede ser nula")
     val mano: Mano,
 
-
+    @field:Positive(message = "El total de dinero ganado debe ser un valor positivo")
+    val TotalDineroGanado: Double,
     @field:NotNull(message = "el revez no puede ser nulo")
     val revez: Revez,
 

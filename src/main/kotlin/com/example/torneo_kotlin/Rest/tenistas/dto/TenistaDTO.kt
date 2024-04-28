@@ -5,7 +5,7 @@ import com.example.torneo_kotlin.Rest.tenistas.models.Revez
 import java.util.*
 
 data class TenistaDTO(
-    val ranking: Long,
+    val ranking: Int,
     val nombreCompleto: String,
     val pais: String,
     val fechaNacimiento: Date,

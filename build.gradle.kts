@@ -39,6 +39,9 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:3.0.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.lighthousegames:logging:1.3.0")
+    implementation("ch.qos.logback:logback-classic:1.4.14")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 }
 
