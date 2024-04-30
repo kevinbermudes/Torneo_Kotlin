@@ -44,5 +44,7 @@ data class CrearTenistaDTO(
 
     @field:NotBlank(message = "La URL de la imagen no puede estar vacía")
     @field:URL(message = "El formato de la URL de la imagen no es válido")
-    val imagen: String
-)
+    val imagen: String,
+
+
+    )

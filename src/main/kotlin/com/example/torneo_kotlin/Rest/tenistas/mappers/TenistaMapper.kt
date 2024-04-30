@@ -10,7 +10,9 @@ import java.time.ZoneId
 import java.util.*
 
 fun Tenista.toDTO(): TenistaDTO {
+
     return TenistaDTO(
+        id = this.id!!,
         ranking = this.ranking,
         nombreCompleto = this.nombreCompleto,
         pais = this.pais,
@@ -26,7 +28,8 @@ fun Tenista.toDTO(): TenistaDTO {
         victorias = this.victorias,
         derrotas = this.derrotas,
         puntos = this.puntos,
-        imagen = this.imagen
+        imagen = this.imagen,
+        nombreTorneo = this.torneo?.nombre ?: "Actualmente sin torneo"
     )
 }
 
@@ -57,8 +60,9 @@ fun CrearTenistaDTO.toEntity(): Tenista {
         derrotas = 0,
         // los puntos iniciales seran 0
         puntos = 0,
-        imagen = this.imagen
-    )
+        imagen = this.imagen,
+
+        )
 }
 
 fun UpdateTenistaDto.toEntity(tenista: Tenista): Tenista {

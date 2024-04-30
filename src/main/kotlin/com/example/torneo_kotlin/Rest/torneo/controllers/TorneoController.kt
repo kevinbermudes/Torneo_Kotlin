@@ -1,6 +1,7 @@
 package com.example.torneo_kotlin.Rest.torneo.controllers
 
 
+import com.example.torneo_kotlin.Rest.tenistas.dto.TenistaDTO
 import com.example.torneo_kotlin.Rest.torneo.dto.CrearTorneoDTO
 import com.example.torneo_kotlin.Rest.torneo.dto.TorneoDTO
 import com.example.torneo_kotlin.Rest.torneo.dto.UpdateTorneoDTO
@@ -8,7 +9,6 @@ import com.example.torneo_kotlin.Rest.torneo.dto.UpdateTorneoParcialDTO
 import com.example.torneo_kotlin.Rest.torneo.services.TorneoService
 import jakarta.validation.Valid
 import org.lighthousegames.logging.logging
-
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -60,6 +60,15 @@ class TorneoController(private val torneoService: TorneoService) {
     @DeleteMapping("/{id}")
     fun eliminarTorneo(@PathVariable id: Long): ResponseEntity<TorneoDTO> =
         ResponseEntity.noContent().also { torneoService.deleteTorneo(id) }.build()
+
+    @PostMapping("/{torneoId}/inscripcion/{tenistaId}")
+    fun inscribirTenista(
+        @PathVariable torneoId: Long,
+        @PathVariable tenistaId: Long
+    ): ResponseEntity<TenistaDTO> {
+        val tenistaDTO = torneoService.inscribirTenistaEnTorneo(torneoId, tenistaId)
+        return ResponseEntity.ok(tenistaDTO)
+    }
 
 }
 

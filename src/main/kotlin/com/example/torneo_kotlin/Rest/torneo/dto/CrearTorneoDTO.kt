@@ -13,16 +13,20 @@ data class CrearTorneoDTO(
     @field:Size(min = 3, max = 50, message = "La ubicación debe tener entre 3 y 50 caracteres")
     val ubicacion: String,
 
+    @field:NotEmpty(message = "El nombre no puede estar vacío")
+    @field:NotBlank(message = "El nombre no puede ser unicamente espacios en blanco")
+    @field:Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres")
+    val nombre: String,
+
     @field:NotNull(message = "La modalidad no puede estar vacía")
     val modalidad: Tipos,
 
     @field:NotNull(message = "La categoría no puede estar vacía")
     val categoria: Categoria,
 
-    @field:Positive(message = "La cantidad de vacantes debe ser un número positivo")
     @field:Min(value = 1, message = "Debe haber al menos una vacante")
     @field:NotNull(message = "La cantidad de participantes no puede estar vacía")
-    val cantidadParticipantes: Int,
+    val vacantes: Int,
 
 
     @field:Positive(message = "El premio debe ser un valor positivo")

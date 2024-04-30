@@ -1,5 +1,6 @@
 package com.example.torneo_kotlin.Rest.tenistas.models
 
+import com.example.torneo_kotlin.Rest.torneo.models.Torneos
 import jakarta.persistence.*
 import java.util.*
 
@@ -42,10 +43,13 @@ data class Tenista(
     @Column(name = "puntos")
     var puntos: Int,
     @Column(name = "imagen")
-    var imagen: String
+    var imagen: String,
 
+    @ManyToOne
+    @JoinColumn(name = "torneo_id")
+    var torneo: Torneos? = null,
 
-)
+    )
 
 enum class Mano {
     diestro, zurdo

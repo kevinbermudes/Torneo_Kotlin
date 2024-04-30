@@ -12,13 +12,16 @@ import java.util.*
 data class UpdateTorneoParcialDTO(
     val ubicacion: String? = null,
 
+    val nombre: String? = null,
+
     val modalidad: Tipos? = null,
+
 
     val categoria: Categoria? = null,
 
     @field:Positive(message = "La cantidad de vacantes debe ser un número positivo")
     @field:Min(value = 1, message = "Debe haber al menos una vacante")
-    val cantidadParticipantes: Int? = null,
+    val vacantes: Int? = null,
 
     @field:Positive(message = "El premio debe ser un valor positivo")
     val premio: Double? = null,

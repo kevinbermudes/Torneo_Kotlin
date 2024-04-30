@@ -11,6 +11,9 @@ data class UpdateTorneoDTO(
     @field:NotEmpty(message = "La ubicación no puede estar vacía")
     val ubicacion: String? = null,
 
+    @field:NotEmpty(message = "El nombre no puede estar vacío")
+    val nombre: String? = null,
+
     @field:NotNull(message = "La modalidad no puede estar vacía")
     val modalidad: Tipos? = null,
 
@@ -19,7 +22,7 @@ data class UpdateTorneoDTO(
 
     @field:Positive(message = "La cantidad de vacantes debe ser un número positivo")
     @field:Min(value = 1, message = "Debe haber al menos una vacante")
-    val cantidadParticipantes: Int? = null,
+    val vacantes: Int? = null,
 
     @field:Positive(message = "El premio debe ser un valor positivo")
     val premio: Double? = null,

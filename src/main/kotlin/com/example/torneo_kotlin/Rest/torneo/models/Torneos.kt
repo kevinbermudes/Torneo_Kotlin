@@ -8,6 +8,8 @@ import java.util.*
 data class Torneos(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
+    @Column(name = "nombre")
+    var nombre: String,
     @Column(name = "ubicacion")
     var ubicacion: String,
 
@@ -28,11 +30,12 @@ data class Torneos(
     @Column(name = "fecha_inicio")
     var fechaInicio: Date,
     @Column(name = "imagen")
-    var imagen: String
-)
+    var imagen: String,
+
+    )
 
 enum class Tipos {
-    individual, Dobles, Mixtos
+    INDIVIDUAL, DOBLES, MIXTOS
 }
 
 enum class Categoria {

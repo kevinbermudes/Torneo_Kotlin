@@ -42,6 +42,10 @@ dependencies {
     implementation("org.lighthousegames:logging:1.3.0")
     implementation("ch.qos.logback:logback-classic:1.4.14")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-websocket")
+    implementation("org.springframework.boot:spring-boot-starter-logging")
+    //   implementation("org.springframework.boot:spring-boot-starter-security")
+
 
 }
 

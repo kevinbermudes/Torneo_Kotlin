@@ -4,5 +4,6 @@ import com.example.torneo_kotlin.Rest.tenistas.models.Tenista
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface TenistaRepositorio : JpaRepository<Tenista, Long> {
+    fun existsByTorneoId(torneoId: Long?): Boolean
 
 }

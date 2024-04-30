@@ -13,9 +13,10 @@ fun CrearTorneoDTO.toEntity(): Torneos {
 
     return Torneos(
         ubicacion = this.ubicacion,
+        nombre = this.nombre,
         modalidad = this.modalidad,
         categoriaCategoria = this.categoria,
-        vacantes = this.cantidadParticipantes,
+        vacantes = this.vacantes,
         premio = this.premio,
         fechaFin = this.fechaFin,
         fechaInicio = this.fechaInicio,
@@ -27,11 +28,12 @@ fun Torneos.toDTO(): TorneoDTO {
     return TorneoDTO(
         id = this.id,
         ubicacion = this.ubicacion,
+        nombre = this.nombre,
         modalidad = this.modalidad.name,
         categoria = this.categoriaCategoria?.name ?: "Desconocida",
         fechaInicio = this.fechaInicio,
         fechaFin = this.fechaFin,
-        cantidadParticipantes = this.vacantes,
+        vacantes = this.vacantes,
         premio = this.premio,
         imagen = this.imagen
     )
@@ -39,9 +41,10 @@ fun Torneos.toDTO(): TorneoDTO {
 
 fun UpdateTorneoDTO.toEntity(torneo: Torneos): Torneos {
     torneo.ubicacion = this.ubicacion ?: torneo.ubicacion
+    torneo.nombre = this.nombre ?: torneo.nombre
     torneo.modalidad = this.modalidad ?: torneo.modalidad
     torneo.categoriaCategoria = this.categoria ?: torneo.categoriaCategoria
-    torneo.vacantes = this.cantidadParticipantes ?: torneo.vacantes
+    torneo.vacantes = this.vacantes ?: torneo.vacantes
     torneo.premio = this.premio ?: torneo.premio
     torneo.fechaFin = this.fechaFin ?: torneo.fechaFin
     torneo.fechaInicio = this.fechaInicio ?: torneo.fechaInicio
@@ -52,9 +55,10 @@ fun UpdateTorneoDTO.toEntity(torneo: Torneos): Torneos {
 
 fun UpdateTorneoParcialDTO.toEntity(torneo: Torneos): Torneos {
     torneo.ubicacion = this.ubicacion ?: torneo.ubicacion
+    torneo.nombre = this.nombre ?: torneo.nombre
     torneo.modalidad = this.modalidad ?: torneo.modalidad
     torneo.categoriaCategoria = this.categoria ?: torneo.categoriaCategoria
-    torneo.vacantes = this.cantidadParticipantes ?: torneo.vacantes
+    torneo.vacantes = this.vacantes ?: torneo.vacantes
     torneo.premio = this.premio ?: torneo.premio
     torneo.fechaFin = this.fechaFin ?: torneo.fechaFin
     torneo.fechaInicio = this.fechaInicio ?: torneo.fechaInicio
